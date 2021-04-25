@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Ticket;
 import ru.netology.repository.TicketRepository;
-
+import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class TicketManagerTest {
@@ -22,8 +22,8 @@ class TicketManagerTest {
         manager.add(ticket1);
         manager.add(ticket2);
         manager.add(ticket3);
-        manager.add(ticket4);
         manager.add(ticket5);
+        manager.add(ticket4);
         manager.add(ticket6);
     }
 
@@ -47,5 +47,11 @@ class TicketManagerTest {
         Ticket[] actual = manager.finAll("LED", "KLF");
         assertArrayEquals(expected, actual);
     }
+    @Test
+    public void shouldTicketSearchAll() {
+        Ticket[] expected = new Ticket[]{ticket1, ticket2, ticket3, ticket4, ticket5, ticket6};
+        Ticket[] actual = new Ticket[]{ticket1, ticket2, ticket3, ticket5, ticket4, ticket6};
+        Arrays.sort(actual);
 
+    }
 }
